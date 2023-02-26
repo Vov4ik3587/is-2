@@ -5,7 +5,6 @@ from keras.models import Sequential
 from keras.utils import to_categorical
 from sklearn.preprocessing import LabelEncoder
 import matplotlib.pyplot as plt
-import matplotlib.colors as mclr
 
 # %% Загружаем данные
 dataframe = pandas.read_csv("iris.csv", header=None)
@@ -22,9 +21,9 @@ dummy_y = to_categorical(encoded_Y)
 # %% Создаем модель
 model = Sequential()
 
-# %% Выбираем конфигурацию модели.
+# %% Выбираем конфигурацию модели. №2
+model.add(Dense(20, activation='relu'))
 model.add(Dense(4, activation='relu'))
-model.add(Dense(16, activation='relu'))
 model.add(Dense(3, activation='softmax'))
 
 # %% Инициализируем параметры обучения и обучаем модель
@@ -45,6 +44,7 @@ plt.xlabel('Epochs')
 plt.ylabel('Loss')
 plt.legend()
 plt.show()
+
 # %% Построение графика точности
 plt.clf()
 plt.plot(epochs, acc, 'bo', label='Training acc')
